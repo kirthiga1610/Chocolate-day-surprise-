@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Chocolate Day Lokiiiii ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #2b0a0a, #000);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 100vh;
+  padding: 30px 15px;
+  display: none;
+}
+
+section.active {
+  display: block;
+  animation: fadeIn 1.5s;
+}
+
+h1 {
+  color: #ffb3c6;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 26px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #ff4d6d, #ff758f);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.chocolate {
+  font-size: 60px;
+  margin: 20px 0;
+}
+
+video {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  color: #ff4d6d;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {transform: translateY(0); opacity: 1;}
+  100% {transform: translateY(-110vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- STEP 1 -->
+<section class="active" id="step1">
+  <div class="chocolate">🍫</div>
+  <h1>Happy Chocolate Day Lokiiiii 🤎</h1>
+  <p>
+    Hey Lokiiiii…  
+    They say chocolates are sweet,  
+    but nothing is sweeter than **you in my life** 🥹❤️  
+    <br><br>
+    – With love, <b>Kirthi</b>
+  </p>
+  <button onclick="nextStep(2)">Next 🍫</button>
+</section>
+
+<!-- STEP 2 -->
+<section id="step2">
+  <div class="chocolate">🍫🍫</div>
+  <h1>A Naughty Question 😌</h1>
+  <p>
+    Lokiiiii…  
+    If Kirthi gives you all her chocolates 🍫  
+    will you also take  
+    her love, mood swings, silly fights  
+    and a lifetime of togetherness? 😄❤️
+  </p>
+  <button onclick="nextStep(3)">Go on 💖</button>
+</section>
+
+<!-- STEP 3 -->
+<section id="step3">
+  <div class="chocolate">🍫❤️</div>
+  <h1>From Kirthi’s Heart 💗</h1>
+  <p>
+    Chocolates melt…  
+    but my love for you never will.  
+    <br><br>
+    Lokiiiii, I don’t want just today.  
+    I want **every Chocolate Day, every fight, every smile — with you** 🥹💞
+  </p>
+  <button onclick="nextStep(4)">One Last Surprise… 🎥</button>
+</section>
+
+<!-- FINAL VIDEO -->
+<section id="step4">
+  <h1>Just For You, Lokiiiii ❤️</h1>
+  <p>
+    This video is my final way of saying  
+    how deeply **Kirthi loves you** 🤍
+  </p>
+
+  <input type="file" accept="video/mp4" id="videoInput">
+  <br><br>
+  <video id="finalVideo" controls></video>
+
+  <p style="margin-top:20px; font-size:20px;">
+    Lokiiiii…  
+    Will you be mine — today, tomorrow & always? 💍❤️  
+    <br><br>
+    – Yours forever, <b>Kirthi</b>
+  </p>
+</section>
+
+<script>
+function nextStep(step) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + step).classList.add('active');
+}
+
+document.getElementById('videoInput').addEventListener('change', function() {
+  const file = this.files[0];
+  const video = document.getElementById('finalVideo');
+  if (file) {
+    video.src = URL.createObjectURL(file);
+    video.play();
+  }
+});
+
+/* floating hearts */
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
